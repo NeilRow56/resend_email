@@ -11,32 +11,31 @@ import {
 } from '@react-email/components'
 import * as React from 'react'
 
-interface WelcomeProps {
-  firstName?: string
+interface ContactFormEmailProps {
+  name: string
+  email: string
+  message: string
 }
 
-export const Welcome = ({ firstName }: WelcomeProps) => (
+export const ContactFormEmail = ({
+  name,
+  email,
+  message
+}: ContactFormEmailProps) => (
   <Html>
     <Head />
     <Preview>Log in with this magic link</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading>Welcome, {firstName}!</Heading>
-
+        <Heading style={h1}>Contact form submission</Heading>
         <Text style={{ ...text, marginBottom: '14px' }}>
-          Thank you {firstName} for signing up for our newsletter.
+          {/* Or, copy and paste this temporary login code: */}
         </Text>
-
-        <Text
-          style={{
-            ...text,
-            color: '#ababab',
-            marginTop: '14px',
-            marginBottom: '16px'
-          }}
-        >
-          If you did not sign up - whoops!
-        </Text>
+        <p>
+          From <strong>{name}</strong> at {email}
+        </p>
+        <h2>Message:</h2>
+        <p>{message}</p>
         <Text
           style={{
             ...text,
@@ -45,18 +44,15 @@ export const Welcome = ({ firstName }: WelcomeProps) => (
             marginBottom: '38px'
           }}
         >
-          Glad to have you onboard
-        </Text>
-
-        <Text style={footer}>
-          WpAccPac for your electronic working papers and databases.
+          {/* Hint: You can set a permanent password in Settings & members → My
+          account. */}
         </Text>
       </Container>
     </Body>
   </Html>
 )
 
-export default Welcome
+export default ContactFormEmail
 
 const main = {
   backgroundColor: '#ffffff'

@@ -13,7 +13,7 @@ export default function Home() {
           await fetch('/api/emails', {
             method: 'POST',
             body: JSON.stringify({
-              email: 'neilrowland56@gmail.com',
+              email: 'neilrowland56@icloud.com',
               firstName: 'Neil'
             })
           })

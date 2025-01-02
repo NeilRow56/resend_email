@@ -11,22 +11,34 @@ import {
 } from '@react-email/components'
 import * as React from 'react'
 
-interface WelcomeProps {
-  firstName?: string
+interface NotionMagicLinkEmailProps {
+  loginCode?: string
 }
 
-export const Welcome = ({ firstName }: WelcomeProps) => (
+export const NotionMagicLinkEmail = ({
+  loginCode = 'sparo-ndigo-amurt-secan'
+}: NotionMagicLinkEmailProps) => (
   <Html>
     <Head />
     <Preview>Log in with this magic link</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading>Welcome, {firstName}!</Heading>
-
+        <Heading style={h1}>Login</Heading>
+        <Link
+          href='https://notion.so'
+          target='_blank'
+          style={{
+            ...link,
+            display: 'block',
+            marginBottom: '16px'
+          }}
+        >
+          Click here to log in with this magic link
+        </Link>
         <Text style={{ ...text, marginBottom: '14px' }}>
-          Thank you {firstName} for signing up for our newsletter.
+          Or, copy and paste this temporary login code:
         </Text>
-
+        <code style={code}>{loginCode}</code>
         <Text
           style={{
             ...text,
@@ -35,7 +47,7 @@ export const Welcome = ({ firstName }: WelcomeProps) => (
             marginBottom: '16px'
           }}
         >
-          If you did not sign up - whoops!
+          If you didn&apos;t try to login, you can safely ignore this email.
         </Text>
         <Text
           style={{
@@ -45,18 +57,28 @@ export const Welcome = ({ firstName }: WelcomeProps) => (
             marginBottom: '38px'
           }}
         >
-          Glad to have you onboard
+          Hint: You can set a permanent password in Settings & members → My
+          account.
         </Text>
 
         <Text style={footer}>
-          WpAccPac for your electronic working papers and databases.
+          <Link
+            href='https://notion.so'
+            target='_blank'
+            style={{ ...link, color: '#898989' }}
+          >
+            Notion.so
+          </Link>
+          , the all-in-one-workspace
+          <br />
+          for your notes, tasks, wikis, and databases.
         </Text>
       </Container>
     </Body>
   </Html>
 )
 
-export default Welcome
+export default NotionMagicLinkEmail
 
 const main = {
   backgroundColor: '#ffffff'
